@@ -32,5 +32,11 @@ UPDATE galette_cotisations SET type_paiement_cotis = 6 WHERE type_paiement_cotis
 ALTER TABLE galette_cotisations CHANGE type_paiement_cotis type_paiement_cotis INT(10) UNSIGNED NOT NULL DEFAULT '0';
 ALTER TABLE galette_cotisations ADD FOREIGN KEY (type_paiement_cotis) REFERENCES galette_paymenttypes(type_id) ON DELETE RESTRICT ON UPDATE CASCADE;
 
+-- add consent field
+
+-- fix fields categories labels
+UPDATE galette_fields_categories SET category = 'Identity:' WHERE id = 1;
+UPDATE galette_fields_categories SET category = 'Galette-related data:' WHERE id = 2;
+UPDATE galette_fields_categories SET category = 'Contact information:' WHERE id = 3;
 UPDATE galette_database SET version = 0.92;
 SET FOREIGN_KEY_CHECKS=1;
