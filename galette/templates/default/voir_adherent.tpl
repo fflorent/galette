@@ -27,10 +27,12 @@
             <li>
                 <a class="button" href="{path_for name="editmember" data=["action" => {_T string="edit" domain="routes"}, "id" => $member->id]}" id="btn_edit">{_T string="Modification"}</a>
             </li>
-{if $login->isAdmin() or $login->isStaff()}
+{if $login->isAdmin() or $login->isStaff() || $login->id eq $member->id || ($member->hasParent() and $member->parent->id eq $login->id)}
             <li>
                 <a class="button" href="{path_for name="contributions" data=["type" => {_T string="contributions" domain="routes"}, "option" => {_T string="member" domain="routes"}, "value" => $member->id]}" id="btn_contrib">{_T string="View contributions"}</a>
             </li>
+{/if}
+{if $login->isAdmin() or $login->isStaff()}
             <li>
                 <a class="button" id="btn_addcontrib" href="{path_for name="contribution" data=["type" => {_T string="fee" domain="routes"}, "action" => {_T string="add" domain="routes"}]}?id_adh={$member->id}">{_T string="Add a membership fee"}</a>
             </li>
