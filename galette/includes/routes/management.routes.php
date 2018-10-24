@@ -1801,6 +1801,7 @@ $app->get(
         $import_fields = $this->members_fields;
         //we do not want to import id_adh. Never.
         unset($import_fields['id_adh']);
+        unset($import_fields['has_consent']);
 
         // display page
         $this->view->render(
