@@ -909,7 +909,6 @@ class Adherent
      */
     public function check($values, $required, $disabled)
     {
-        global $preferences;
         $this->errors = array();
 
         $fields = self::getDbFields($this->zdb);
@@ -1041,7 +1040,11 @@ class Adherent
      */
     public function validate($field, $value)
     {
+        global $preferences;
+
         $this->errors = array();
+        $prop = '_' . $this->fields[$field]['propname'];
+
         switch ($field) {
             // dates
             case 'date_crea_adh':
