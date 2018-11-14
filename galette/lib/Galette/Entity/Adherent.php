@@ -1043,7 +1043,6 @@ class Adherent
     {
         global $preferences;
 
-        $this->errors = array();
         $prop = '_' . $this->fields[$field]['propname'];
 
         switch ($field) {
