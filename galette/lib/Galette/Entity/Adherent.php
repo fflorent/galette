@@ -971,7 +971,7 @@ class Adherent
 
                 // now, check validity
                 if ($value !== null && $value != '') {
-                    $this->validate($key, $value);
+                    $this->validate($key, $value, $values);
                 } elseif (($key == 'login_adh' && !isset($required['login_adh']))
                     || ($key == 'mdp_adh' && !isset($required['mdp_adh']))
                     && !isset($this->_id)
@@ -1033,12 +1033,13 @@ class Adherent
      * Validate data for given key
      * Set valid data in current object, also resets errors list
      *
-     * @param string $field Field name
-     * @param mixed  $value Value we want to set
+     * @param string $field  Field name
+     * @param mixed  $value  Value we want to set
+     * @param array  $values All values, for some references
      *
      * @return void
      */
-    public function validate($field, $value)
+    public function validate($field, $value, $values)
     {
         global $preferences;
 

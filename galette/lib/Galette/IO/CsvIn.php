@@ -296,7 +296,7 @@ class CsvIn extends Csv implements FileInterface
                             return false;
                         }
 
-                        $member->validate($this->_fields[$col], $column);
+                        $member->validate($this->_fields[$col], $column, $this->_fields);
                         if (count($member->errors)) {
                             foreach ($member->errors as $error) {
                                 $this->addError($error);
